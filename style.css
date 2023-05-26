@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+li {
+  list-style: none;
+}
+a,
+span,
+img {
+  display: inline-block;
+}
+
+.ayb {
+  height: 20px;
+  width: 20px;
+}
+.nu {
+  color: #5c5cf8;
+}
+.un {
+  color: #dad8d8;
+}
+.stroke_color {
+  stroke: #9ca3af;
+}
+
+.stroke_color:hover {
+  stroke: #777b81;
+}
+
+.fab_li {
+  list-style-position: outside;
+  margin: 4px 0;
+  padding-left: 6px;
+  list-style-image: url(./images/circle-svgrepo-com.svg);
+}
+
+.image_des {
+  position: relative;
+}
+
+.image_des::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  height: 0px;
+  border-bottom: 0.5px solid #e5e6e8;
+}
+.image-o {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.bg_ln {
+  transform: translateY(-20%);
+}
+
+.bg_ln::before {
+  content: "";
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0.5)
+  );
+}
+
+.price {
+  position: absolute;
+  color: white;
+  right: 20px;
+  bottom: 35%;
+  z-index: 2;
+  font-weight: 600;
+  font-size: 20px;
+}
+@media (min-width: 540px) {
+  .bg_ln {
+    transform: translateY(-25%);
+  }
+}
+
+@media (min-width: 680px) {
+  .bg_ln {
+    transform: translateY(0);
+  }
+  .cards {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .card {
+    width: 48%;
+    /* margin-right: 20px; */
+  }
+}
+
+@media (min-width: 1040px) {
+  .also_bought .container {
+    max-width: 100%;
+  }
+  .card {
+    width: 23%;
+  }
+}
+
+.for_flex {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 6rem;
+  justify-content: start;
+}
+
+@media (min-width: 700px) {
+  .for_flex .one {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 7rem;
+    justify-content: start;
+  }
+}
