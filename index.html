@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Promises</title>
+  </head>
+  <body class="bg-sky-50 py-10 flex flex-col justify-between items-center">
+    <h1 class="text-5xl mb-6 font-black">RecipeSearch</h1>
+    <h3 class="mb-8 text-lg w-11/12 text-center">Search your favourite recipes and embark the journey towards delicacies with RecipeSearch </h3>
+    <div class="search-container h-12 w-10/12 max-w-xl flex mb-32">
+
+      <input
+        type="text"
+        id="searchInput"
+        class="w-9/12 rounded-s-lg focus:outline-none focus:border-2 focus:border-sky-500 box-border"
+        placeholder="e.g. salad"
+      />
+      <button
+        type="submit"
+        id="search"
+        onclick="fetchReceipe()"
+        class="w-3/12 rounded-e-lg text-md tracking-widest bg-blue-400 hover:bg-blue-700 hover:text-white transition-all "
+      >
+        Search
+      </button>
+    </div>
+
+    <div id="recipeContainer" class="">
+    </div>
+    <!-- js -->
+    <script src="app.js"></script>
+  </body>
+</html>
