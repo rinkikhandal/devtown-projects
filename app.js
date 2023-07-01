@@ -7,10 +7,9 @@ const addInfo = document.querySelector(".addinfo");
 
 // one call
 const coord = navigator.geolocation.getCurrentPosition((position) => {
-  // console.log(position.coords.latitude, position.coords.longitude);
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
-  let res = new Promise((resolve, reject) => {
+
     const coordWeather = fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appID}&units=metric`
     );
@@ -30,9 +29,10 @@ const coord = navigator.geolocation.getCurrentPosition((position) => {
         setDefault();
 
         weatherCard.innerHTML = `<p class="mt-8 text-white text-lg tracking-widest">Please enter a valid city name</p>`;
+        addInfo.innerHTML = ``;
       });
   });
-});
+
 
 const fetchWeather = async (e) => {
   e.preventDefault();
@@ -47,10 +47,10 @@ const fetchWeather = async (e) => {
     console.log(data);
     cardShow(main, weather, name, wind);
   } catch (error) {
-    // console.log(error);
     setDefault();
 
     weatherCard.innerHTML = `<p class="mt-8 text-white text-lg tracking-widest">Please enter a valid city name</p>`;
+    addInfo.innerHTML = ``;
   }
 };
 
@@ -62,7 +62,6 @@ const setDefault = () => {
 const cardShow = (main, weather, name, wind) => {
   const iconcode = weather[0].icon;
   const iconUrl = `https://openweathermap.org/img/wn/${iconcode}.png`;
-  // console.log(data);
   setDefault();
 
   weatherCard.innerHTML = ` <article class="flex flex-col items-center text-center text-white mb-4">
@@ -80,8 +79,8 @@ const cardShow = (main, weather, name, wind) => {
           `;
   const infoBtn = document.querySelector(".info-btn");
 
-  const addDiv = document.createElement("div")
-  addDiv.classList.add("showinfo")
+  const addDiv = document.createElement("div");
+  addDiv.classList.add("showinfo");
   addDiv.innerHTML = `
 <h5>Max_Temp: ${main.temp_max}&#176;C</h5>
                   <h5>Min_Temp: ${main.temp_min}&#176;C</h5>
@@ -93,12 +92,12 @@ const cardShow = (main, weather, name, wind) => {
 
   infoBtn.addEventListener("click", (e) => {
     if (infoBtn.textContent == "Show more info") {
-      addInfo.appendChild(addDiv)
+      addInfo.appendChild(addDiv);
       console.log(addInfo);
       infoBtn.textContent = `Hide extra info`;
     } else {
       infoBtn.textContent = `Show more info`;
-      addInfo.innerHTML =''
+      addInfo.innerHTML = "";
     }
   });
 };
