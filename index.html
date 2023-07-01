@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>weather API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div
+      class="wcontainer min-h-[100vh] relative left-0 bottom-0 right-0 w-full"
+    >
+      <video
+        class="video-container absolute left-0 bottom-0 right-0 h-full w-full z-[-10] object-cover"
+        muted
+        autoplay
+        loop
+      >
+        <source src="videos/bg-video.mp4" type="video/mp4" />
+      </video>
+      <main class="px-10 py-8 z-10 flex flex-col justify-between w-full h-full">
+        <h1 class="font-extrabold text-center text-slate-900 mb-10 text-6xl">
+          Weather
+        </h1>
+        <!-- <h3 class="text-center text-xl text-white tracking-widest mb-6 ">Get the weather details of any city with us</h3> -->
+        <div class="flex flex-col justify-between items-center">
+          <form
+            class="searchBar max-w-[600px] h-12 flex w-full mb-12 rounded-lg bg-white px-4 justify-between items-center"
+          >
+            <input
+              type="text"
+              name="search_city"
+              id="input"
+              placeholder="enter the city"
+              class="capitalize opacity-60 w-full h-full tracking-widest focus:outline-none"
+            />
+            <span
+              ><svg
+                width="30px"
+                height="30px"
+                viewBox="0 0 24 24"
+                fill="none"
+                class="hover:stroke-gray-700 stroke-gray-500 transition-all"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17 17L21 21"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                  stroke-width="2"
+                />
+              </svg>
+            </span>
+          </form>
+          <div class="weather flex flex-col items-center w-full justify-center h-full">
+            <img
+              src="videos/loading-gif-png-5.gif"
+              alt="loading"
+              height="50px "
+              width="50px"
+            class="pt-16 mb-5"/>
+            <p class="text-white text-xl">Loading...</p>
+          </div>
+          <div class="addinfo w-full h-full text-center"></div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
