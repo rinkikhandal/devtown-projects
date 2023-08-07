@@ -1,6 +1,7 @@
 const Products = require("../models/product");
 const fs = require("fs/promises");
 const StatusCodes = require("http-status-codes");
+const { BadRequest } = require("../errors/index");
 
 const getProducts = async (req, res) => {
   const data = await fs.readFile("./db/productStore.json", "utf8");
@@ -10,6 +11,10 @@ const getProducts = async (req, res) => {
 
 const createProducts = async (req, res) => {
   const { id } = req.body;
+
+  if (!id) {
+    throw new BadRequest("Bad Credentials : please enter the id of product");
+  }
 
   const data = await fs.readFile("./db/productStore.json", "utf8");
   const parsedData = JSON.parse(data);
