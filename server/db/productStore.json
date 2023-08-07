@@ -1,0 +1,27 @@
+[
+  {
+    "productName": "apple-smartPhone",
+    "productId": 1,
+    "description": "it's a smart phone by apple company"
+  },
+  {
+    "productName": "vaccum-cleaner",
+    "productId": 2,
+    "description": "help in cleaning efficiently"
+  },
+  {
+    "productName": "headphones",
+    "productId": 3,
+    "description": "wireless and clean sound"
+  },
+  {
+    "productName": "sofa-set",
+    "productId": 4,
+    "description": "comfortable and relaxing"
+  },
+  {
+    "productName": "refrigerator",
+    "productId": 5,
+    "description": "fast and efficient cooling"
+  }
+]
