@@ -13,7 +13,7 @@ npm install and npm start
 # For User
 
 => to register user {route:/register}
-=> to login and generate jwt {route:/login}
+=> to login and generate jwt token and place it in the headers of other routes ex:{authorization:token} {route:/login}
 
 # For Posts CRUD
 
