@@ -19,15 +19,17 @@ const addProducts = async (req, res) => {
   const data = await fs.readFile("./db/productStore.json", "utf8");
   const parsedData = JSON.parse(data);
 
-  const product = parsedData.find(
-    (product) => product.productId === Number(id)
-  );
+  let product = parsedData.find((product) => product.productId === Number(id));
 
   if (!product) {
     throw new NotFoundError(`no product with id: ${id}`);
   }
 
-  const addedToDB = await Products.create({ ...product });
+  product.cartHolder = req.user.userId;
+
+  const addedToDB = await Products.create({
+    ...product,
+  });
 
   res.status(StatusCodes.OK).json({
     success: true,

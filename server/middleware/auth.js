@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const authenticateUser = async (req, res, next) => {
   const { authorization } = req.headers;
-  if (!authorization || !authorization.startsWith("Bearer")) {
+  if (!authorization || !authorization.startsWith("Bearer ")) {
     throw new UnAuthorizedAccess("Authentication Invalid");
   }
 

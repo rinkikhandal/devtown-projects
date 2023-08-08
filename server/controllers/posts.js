@@ -3,8 +3,9 @@ const Post = require("../models/posts");
 const { UnAuthorizedAccess, BadRequest, NotFoundError } = require("../errors");
 
 const createPosts = async (req, res) => {
-  const { username: author } = req.user;
-  const { title, content } = req.body;
+  req.body.author = req.user.userId;
+  const { title, content, author } = req.body;
+
   if (!author) {
     throw new UnAuthorizedAccess("unauthorized access");
   }
@@ -31,7 +32,6 @@ const getPosts = async (req, res) => {
 
 const updatePost = async (req, res) => {
   const { id: postId } = req.params;
-  const { title, content } = req.body;
 
   const post = await Post.findOneAndUpdate({ _id: postId }, req.body, {
     new: true,
@@ -67,6 +67,7 @@ const deletePost = async (req, res) => {
   const { id: postId } = req.params;
 
   const post = await Post.deleteOne({ _id: postId });
+
   if (!post) {
     throw new NotFoundError(`no post with id: ${postId}`);
   }

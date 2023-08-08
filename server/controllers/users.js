@@ -2,10 +2,6 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequest, UnAuthorizedAccess } = require("../errors/index");
 const User = require("../models/user");
 
-const getdata = async (req, res) => {
-  res.send("hello this is the userpage");
-};
-
 const registerData = async (req, res) => {
   const { username, email, password } = req.body;
   if (!username || !email || !password) {

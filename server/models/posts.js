@@ -1,23 +1,26 @@
 const mongoose = require("mongoose");
 
-const PostSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    unique: true,
-    trim: true,
-    required: [true, "please enter the title"],
-    maxLength: [20, "title should be atmost 20 chrs, got {VALUE}"],
+const PostSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      unique: true,
+      trim: true,
+      required: [true, "please enter the title"],
+      maxLength: [20, "title should be atmost 20 chrs, got {VALUE}"],
+    },
+    content: {
+      type: String,
+      required: [true, "enter the post content"],
+      trim: true,
+    },
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: [true, "please provide user"],
+    },
   },
-  content: {
-    type: String,
-    required: [true, "enter the post content"],
-    trim: true,
-  },
-  author: {
-    type: String,
-    trim: true,
-    required: true,
-  },
-});
+  { timestamps: true }
+);
 
 module.exports = mongoose.model("Post", PostSchema);

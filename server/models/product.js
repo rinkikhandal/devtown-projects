@@ -15,6 +15,11 @@ const ProductSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  cartHolder: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+    required: [true, "please specify the cartHolder"],
+  },
 });
 
 module.exports = mongoose.model("Products", ProductSchema);
