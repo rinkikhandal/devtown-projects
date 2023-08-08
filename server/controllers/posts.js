@@ -1,6 +1,6 @@
 const StatusCodes = require("http-status-codes");
 const Post = require("../models/posts");
-const { UnAuthorizedAccess, BadRequest } = require("../errors");
+const { UnAuthorizedAccess, BadRequest, NotFoundError } = require("../errors");
 
 const createPosts = async (req, res) => {
   const { username: author } = req.user;
@@ -38,6 +38,10 @@ const updatePost = async (req, res) => {
     runValidators: true,
   });
 
+  if (!post) {
+    throw new NotFoundError(`no post with id: ${postId}`);
+  }
+
   res.status(StatusCodes.OK).json({
     success: true,
     post,
@@ -49,6 +53,10 @@ const getPostById = async (req, res) => {
 
   const post = await Post.findOne({ _id: postId });
 
+  if (!post) {
+    throw new NotFoundError(`no post with id: ${postId}`);
+  }
+
   res.status(StatusCodes.OK).json({
     success: true,
     post,
@@ -59,6 +67,9 @@ const deletePost = async (req, res) => {
   const { id: postId } = req.params;
 
   const post = await Post.deleteOne({ _id: postId });
+  if (!post) {
+    throw new NotFoundError(`no post with id: ${postId}`);
+  }
 
   res.status(StatusCodes.OK).json({
     success: true,
