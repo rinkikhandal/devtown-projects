@@ -9,6 +9,6 @@ const {
 
 router.route("/").get(getProducts);
 router.route("/cart").get(getCartProducts).post(addProducts);
-router.route("/cart/:id").delete(deleteProduct);
+router.route("/cart/:productId").delete(deleteProduct);
 
 module.exports = router;

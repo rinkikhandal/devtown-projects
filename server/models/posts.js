@@ -14,7 +14,7 @@ const PostSchema = new mongoose.Schema(
       required: [true, "enter the post content"],
       trim: true,
     },
-    author: {
+    postedBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: [true, "please provide user"],

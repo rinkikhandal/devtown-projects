@@ -10,19 +10,21 @@ const getProducts = async (req, res) => {
 };
 
 const addProducts = async (req, res) => {
-  const { id } = req.body;
+  const { productId } = req.body;
 
-  if (!id) {
+  if (!productId) {
     throw new BadRequest("Bad Credentials : please enter the id of product");
   }
 
   const data = await fs.readFile("./db/productStore.json", "utf8");
   const parsedData = JSON.parse(data);
 
-  let product = parsedData.find((product) => product.productId === Number(id));
+  let product = parsedData.find(
+    (product) => product.productId === Number(productId)
+  );
 
   if (!product) {
-    throw new NotFoundError(`no product with id: ${id}`);
+    throw new NotFoundError(`no product with id: ${productId}`);
   }
 
   product.cartHolder = req.user.userId;
@@ -38,21 +40,27 @@ const addProducts = async (req, res) => {
 };
 
 const getCartProducts = async (req, res) => {
-  const products = await Products.find({});
+  const products = await Products.find({ cartHolder: req.user.userId });
   res
     .status(StatusCodes.OK)
     .json({ success: true, product_ADDED_TO_Cart: products });
 };
 
 const deleteProduct = async (req, res) => {
-  const { id } = req.params;
-  const { productName } = await Products.findOne({ productId: id });
+  const {
+    params: { productId },
+    user: { userId },
+  } = req;
+  const { productName } = await Products.findOne({
+    productId,
+    cartHolder: userId,
+  });
 
   if (!productName) {
     throw new NotFoundError(`no product with id: ${id}`);
   }
 
-  const product = await Products.deleteOne({ productId: id });
+  const product = await Products.deleteOne({ productId, cartHolder: userId });
 
   res.status(StatusCodes.OK).json({
     success: true,
