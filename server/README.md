@@ -1,6 +1,6 @@
 ### this is the backend server with JWT authentication
 
-## project setup
+# project setup
 
 In order to spin up the project, in the server create .env with these three variables, with your own values.
 
@@ -10,22 +10,26 @@ After that run this command:
 
 npm install and npm start
 
-# For User
+## For User
 
-=> to register user {route:/register}
-=> to login and generate jwt token and place it in the headers of other routes ex:{authorization:token} {route:/login}
+- to register user {route:/register}
 
-# For Posts CRUD
+- to login and generate jwt token and place it in the headers of other routes ex:{authorization:token} {route:/login}
 
-=> to create and get all posts {route:/api/v1/posts}
-=> to update , delete and get post by id {route:/api/v1/posts/:id}
+## For Posts CRUD
 
-# For Products
+- to create and get all posts {route:/api/v1/posts}
 
-=> to get all products from db {route:/api/v1/products}
-=> to get and add the products in cart {route:api/v1/products/cart}
-=> to delete the cart products {route:/api/v1/products/cart/:id}
+- to update , delete and get post by id {route:/api/v1/posts/:id}
 
-# Functionalities pending
+## For Products
 
-=> Refresh token after the expiration and logout.
+- to get all products from db {route:/api/v1/products}
+
+- to get and add the products in cart {route:api/v1/products/cart}
+
+- to delete the cart products {route:/api/v1/products/cart/:id}
+
+## Functionalities pending
+
+- Refresh token after the expiration and logout.
