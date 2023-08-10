@@ -3,11 +3,7 @@ const { BadRequest, UnAuthorizedAccess } = require("../errors/index");
 const User = require("../models/user");
 
 const registerData = async (req, res) => {
-  const { username, email, password } = req.body;
-  if (!username || !email || !password) {
-    throw new BadRequest("please enter username email and password");
-  }
-  const user = await User.create({ name: username, email, password });
+  const user = await User.create({ ...req.body });
   res.status(StatusCodes.OK).json({
     success: true,
     msg: `hello ${user.name} your account has been created`,
