@@ -5,17 +5,25 @@ import Task from "./task"
 
 const Todo = () => {
   const [todos, setTodos] = useState([])
+  const [msg, setmsg] = useState("")
+  const [clr, setclr] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
     let title = e.target.task.value
+    if (!title) {
+      setclr("crimson")
+      setmsg("please enter the task")
+    }
     const completed = false
     const id = uuidv4()
     setTodos([...todos, { title: title, completed: completed, id: id }]);
-    
-    e.target.task.value=""
-
-    
+    e.target.task.value = ""
+    setTimeout(() => {
+      setclr('')
+      setmsg('')
+    },1000)
+      
   }
 
   return (
@@ -31,7 +39,7 @@ const Todo = () => {
           />
           <button type="submit" className="text-white font-medium rounded-e-lg text-sm px-5 py-2.5 text-center  bg-blue-600 hover:bg-blue-700 focus:ring-primary-800 ">Submit</button>
         </form>
-        <div className="msg"></div>
+        <div className="msg" style={{color:clr}}>{msg }</div>
       </div>
 
       
