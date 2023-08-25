@@ -8,10 +8,13 @@ const Todo = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const title = e.target.task.value
+    let title = e.target.task.value
     const completed = false
     const id = uuidv4()
     setTodos([...todos, { title: title, completed: completed, id: id }]);
+    
+    e.target.task.value=""
+
     
   }
 
