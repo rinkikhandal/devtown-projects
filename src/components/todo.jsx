@@ -4,14 +4,15 @@ import { v4 as uuidv4 } from 'uuid'
 import Task from "./task"
 
 const Todo = () => {
-  const [todo, settodo] = useState({})
+  const [todos, setTodos] = useState([])
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const title = e.target.task.value
     const completed = false
     const id = uuidv4()
-    settodo({ title:title, completed:completed, id:id })
+    setTodos([...todos, { title: title, completed: completed, id: id }]);
+    
   }
 
   return (
@@ -30,11 +31,10 @@ const Todo = () => {
         <div className="msg"></div>
       </div>
 
-      <div className="todoAdd  rounded-lg shadow border  bg-gray-800 border-gray-700 w-11/12 max-w-[500px] py-2 px-10 capitalize box-border">
+      
         {/* single item  */}
-        {todo && <Task todo={todo} />}
+        {todos && <Task  todos={ todos} />}
         {/* end of single item  */}
-      </div>
     </div>
   )
 }
