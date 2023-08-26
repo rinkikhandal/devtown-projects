@@ -22,7 +22,7 @@ const Login = () => {
         setclr("red")
       }
       else {
-        navigate("/todos",{state:{name:name,password:password}})
+        navigate("/todos")
         
       }
 
