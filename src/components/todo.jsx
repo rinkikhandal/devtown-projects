@@ -6,6 +6,7 @@ import Task from "./task"
 
 const Todo = () => {
   const { state } = useLocation()
+  console.log(state);
   const [todos, setTodos] = useState(state?state.updatedTodos:[])
 
   const [msg, setmsg] = useState("")
