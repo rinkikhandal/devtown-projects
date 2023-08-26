@@ -6,26 +6,27 @@ const Edit = () => {
   const navigate = useNavigate();
   const [msg, setmsg] = useState("");
   const [clr, setclr] = useState("");
-  let todo = state.todo;
   let todos = state.todos;
+  const id = window.location.pathname.split("/")[2]
+
+  const todo = todos.find((todo) => todo.id === id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const title = e.target.task.value;
-    const completed = e.target.completed.value;
+    const completed = e.target.completed.checked;
     if (!title) {
       setmsg("please enter the task");
       setclr("crimson");
     }
-    todos = todos.map((t) => {
-      if (t.id === todo.id) {
-        t.title = title;
-        t.completed = completed;
+    todos = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.title = title;
+        todo.completed = completed;
       }
-      return t;
+      return todo;
     });
-
-    navigate("/todos",{state:{todos:todos}});
+    navigate("/todos", { state: { updatedTodos: todos } });
   };
 
   return (
@@ -71,7 +72,7 @@ const Edit = () => {
             </label>
             <input
               type='checkbox'
-              defaultValue={todo.completed}
+              defaultChecked={todo.completed}
               name='completed'
               id='completed'
               className=' '

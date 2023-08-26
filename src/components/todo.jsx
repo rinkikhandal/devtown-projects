@@ -1,16 +1,19 @@
+import {useLocation} from 'react-router'
 
 import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid'
 import Task from "./task"
 
 const Todo = () => {
-  const [todos, setTodos] = useState([])
+  const { state } = useLocation()
+  const [todos, setTodos] = useState(state?state.updatedTodos:[])
+
   const [msg, setmsg] = useState("")
   const [clr, setclr] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    let title = e.target.task.value
+    const title = e.target.task.value
     if (!title) {
       setclr("crimson")
       setmsg("please enter the task")

@@ -13,7 +13,7 @@ function App() {
           <Route path="/" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/todos" element={<Todo />} />
-          <Route path="/editTodo" element={<Edit />} />
+          <Route path="/editTodo/:id" element={<Edit />} />
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </Router>
