@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useState} from 'react'
 import { useNavigate } from "react-router";
+import axios  from 'axios'
+
+
 const Register = () => {
 
   const [msg, setmsg] = useState("")
@@ -8,11 +11,11 @@ const Register = () => {
 const navigate = useNavigate();
   
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
 const name =e.target.name.value
 const email =e.target.email.value
 const password =e.target.password.value
-    const cpassword = e.target.cpassword.value
+const cpassword = e.target.cpassword.value
     
 
     e.preventDefault();
@@ -24,10 +27,13 @@ const password =e.target.password.value
       setmsg("your confirmation password is wrong!!")
       setclr("crimson")
     } else {
-      navigate("/login",{ state: {
-        name:name,password:password
+      try {
+        const data = await axios.post(" http://localhost:1212/api/user/register", { username: name, password:password, email:email })
+        navigate("/login")
       }
-      })
+      catch (error) {
+        console.log(error.response);
+      }
     
     }
 

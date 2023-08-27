@@ -3,7 +3,7 @@ import { BiSolidEdit } from "react-icons/bi";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 
-const Task = ({ todos }) => {
+const Task = ({ todos}) => {
   const navigate = useNavigate();
   const [updatedTodos, setUpdatedTodos] = useState(todos);
 
@@ -18,8 +18,9 @@ const Task = ({ todos }) => {
   const handleDelete = (e, todo) => {
     const article = e.currentTarget.parentElement.parentElement;
     article.style.display = "none";
-    const filteredTodos = updatedTodos.filter((t) => t.id !== todo.id);
-    setUpdatedTodos(filteredTodos);
+    todos = todos.filter((t) => t.id !== todo.id);
+    setUpdatedTodos(todos);
+    
   };
 
   return (
