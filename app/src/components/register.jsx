@@ -8,7 +8,12 @@ const Register = () => {
 
   const [msg, setmsg] = useState("")
   const [clr, setclr] = useState("")
-const navigate = useNavigate();
+  const navigate = useNavigate();
+  
+  const tokenPresent = localStorage.getItem('token')
+  if (tokenPresent) {
+    navigate('/todos')
+  }
   
 
   const handleSubmit = async(e) => {
@@ -32,7 +37,7 @@ const cpassword = e.target.cpassword.value
         navigate("/login")
       }
       catch (error) {
-        console.log(error.response);
+        console.log(error.response.data.msg);
       }
     
     }

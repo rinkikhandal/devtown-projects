@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from 'axios'
 
 const Login = () => {
@@ -7,11 +7,11 @@ const Login = () => {
   const [clr, setclr] = useState("");
   const navigate = useNavigate();
 
-  const { state } = useLocation();
-
-  if (!state) {
-    navigate("/");
+  const tokenPresent = localStorage.getItem('token')
+  if (tokenPresent) {
+    navigate('/todos')
   }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -20,19 +20,20 @@ const Login = () => {
       const data = await axios.post(" http://localhost:1212/api/user/login", { email, password });
       const parsedResponse = JSON.parse(data.request.response)
       localStorage.setItem('token', JSON.stringify(parsedResponse.token))
-
-      if (localStorage.getItem('token')) {
-        navigate("/todos");
-      }
+      navigate('/todos')
+      
     } catch (error) {
-      console.log(error);
+      const errMessage = error.response.data.msg 
+      setclr('crimson')
+      setmsg(errMessage)
+      console.log(errMessage);
     }
   };
 
     setTimeout(() => {
     setclr('')
     setmsg('')
-  },1000)
+  },2000)
 
   return (
     <section className=' bg-gray-900'>

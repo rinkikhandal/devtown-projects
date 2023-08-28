@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.msg {
+  margin-top: 20px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
