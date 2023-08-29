@@ -7,7 +7,7 @@ const Edit = () => {
   const [clr, setclr] = useState("");
   const navigate = useNavigate();
 
-  const [todo, setTodo] = useState();
+  const [todo, setTodo] = useState({});
   const [loading, setLoading] = useState(true);
 
   const axiosInstance = axios.create({
@@ -37,11 +37,12 @@ const Edit = () => {
             Authorization: `Bearer ${tokenPresent}`,
           },
         });
-        const todo = await axiosInstance.get(
+        const res = await axiosInstance.get(
           `http://localhost:1212/api/user/todos/todo/${id}`
         );
-        console.log(todo);
-        setTodo(todo);
+
+        const gotTodo = res.data.todo
+        setTodo(gotTodo);
         setLoading(false);
       }
     }
@@ -64,15 +65,16 @@ const Edit = () => {
         `http://localhost:1212/api/user/todos/todo/${id}`,
         { title: title, completed: completed }
       );
-      console.log(editedTodo);
       navigate("/todos");
     } catch (error) {
       console.log(error);
     }
+  }
+
 
     return (
       <div className='flex flex-col items-center  px-6  mx-auto  bg-gray-900 h-[100vh] w-full  '>
-        <div className='w-11/12 max-w-[500px] rounded-lg shadow border my-20   bg-gray-800   border-gray-700 px-8  py-10'>
+        {loading?<h1 className="text-white text-xl mt-20">Loading...</h1>:<div className='w-11/12 max-w-[500px] rounded-lg shadow border my-20   bg-gray-800   border-gray-700 px-8  py-10'>
           <h2 className='text-2xl font-semibold text-white text-center  pb-8'>
             Edit Your Todo
           </h2>
@@ -129,10 +131,11 @@ const Edit = () => {
           <div className='msg' style={{ color: clr }}>
             {msg}
           </div>
-        </div>
+        </div>}
+        
       </div>
     );
-  };
+  
 };
 
 export default Edit;

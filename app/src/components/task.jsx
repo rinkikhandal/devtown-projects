@@ -16,7 +16,6 @@ const Task = ({ todos }) => {
           });
 
   const handleEdit = (todo) => {
-    console.log(todo._id);
     navigate(`/editTodo/${todo._id}`);
   };
 
