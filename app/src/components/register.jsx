@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState} from 'react'
+import { useState,useEffect} from 'react'
 import { useNavigate } from "react-router";
 import axios  from 'axios'
 
@@ -10,10 +10,10 @@ const Register = () => {
   const [clr, setclr] = useState("")
   const navigate = useNavigate();
   
-  const tokenPresent = localStorage.getItem('token')
+useEffect(()=>{ const tokenPresent = localStorage.getItem('token')
   if (tokenPresent) {
     navigate('/todos')
-  }
+  }},[])
   
 
   const handleSubmit = async(e) => {

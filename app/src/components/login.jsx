@@ -1,4 +1,5 @@
 import { useNavigate, useLocation } from "react-router";
+import {Link} from 'react-router-dom'
 import { useState,useEffect } from "react";
 import axios from 'axios'
 
@@ -7,10 +8,12 @@ const Login = () => {
   const [clr, setclr] = useState("");
   const navigate = useNavigate();
 
-  const tokenPresent = localStorage.getItem('token')
+
+  useEffect(()=>{ const tokenPresent = localStorage.getItem('token')
   if (tokenPresent) {
     navigate('/todos')
-  }
+  }},[])
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +22,8 @@ const Login = () => {
     try {
       const data = await axios.post(" http://localhost:1212/api/user/login", { email, password });
       const parsedResponse = JSON.parse(data.request.response)
-      localStorage.setItem('token', JSON.stringify(parsedResponse.token))
+      localStorage.setItem('token', parsedResponse.token)
+      // console.log(localStorage.getItem('token'));
       navigate('/todos')
       
     } catch (error) {
@@ -84,6 +88,9 @@ const Login = () => {
                 Login to account
               </button>
             </form>
+          <p className="text-sm font-light text-gray-400">
+              Don't have an account? <Link to="/" className="font-medium  hover:underline text-violet-500 ">Register here</Link>
+            </p>
             <div className='msg text-white' style={{ color: clr }}>
               {msg}
             </div>

@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const authorization = async (req, res, next) => {
   let token = req.headers.authorization;
+  // console.log(token);
   if (!token || !token.startsWith("Bearer ")) {
     throw new UnAuthorizedAccess("UnAuthorized Access");
   }

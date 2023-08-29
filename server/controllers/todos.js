@@ -9,12 +9,22 @@ const getAllTodos = async (req, res) => {
   res.status(statusCode.OK).json({ success: true, todos });
 };
 
+const getSingleTodo = async (req, res) => {
+  const {
+    user: { userId },
+    params: { id },
+  } = req;
+  const todo = await Todo.findOne({ user: userId, _id: id });
+  res.status(statusCode.OK).json({ success: true, todo });
+};
+
 const addTodo = async (req, res) => {
   const { title } = req.body;
   const { userId } = req.user;
   const todo = await Todo.create({ title, user: userId });
   res.status(statusCode.OK).json({ todo });
 };
+
 const editTodo = async (req, res) => {
   const { id } = req.params;
   const { title, completed } = req.body;
@@ -45,4 +55,5 @@ module.exports = {
   addTodo,
   editTodo,
   deleteTodo,
+  getSingleTodo,
 };

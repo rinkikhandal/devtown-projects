@@ -9,7 +9,6 @@ const UserSchema = mongoose.Schema({
     required: [true, "please enter username"],
     maxlength: [30, "username cannot be more than 30 letters"],
     trim: true,
-    index: { unique: true },
   },
   email: {
     type: String,
@@ -19,7 +18,6 @@ const UserSchema = mongoose.Schema({
       "invalid email",
     ],
     trim: true,
-    unique: [true, "email already registered"],
   },
   password: {
     type: String,
