@@ -88,12 +88,12 @@ const Todo = () => {
     <div>
 
       <button
-        className='absolute right-10 top-10 text-white bg-blue-600 hover:bg-blue-700 border-none tracking-wide px-3 py-2 rounded text-lg'
+        className='absolute right-10 top-5 text-white bg-blue-600 hover:bg-blue-700 border-none tracking-wide px-3 py-2 rounded text-lg'
         onClick={handleLogout}
       >
         Log Out
       </button>
-      <div className='flex flex-col items-center  px-6  mx-auto  bg-gray-900 h-[100vh] w-full  '>
+      <div className='flex flex-col items-center  px-6  mx-auto  bg-gray-900 min-h-[100vh] w-full pb-10 '>
         <div className='w-11/12 max-w-[500px] rounded-lg shadow border my-20   bg-gray-800   border-gray-700 px-8  py-10'>
           <h2 className='text-2xl font-semibold text-white text-center  pb-8'>
             Add Your Todos{" "}
