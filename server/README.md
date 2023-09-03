@@ -20,6 +20,10 @@ npm install and npm start
 
 - to create and get all posts {route:/api/v1/posts}
 
+```sh
+http://localhost:{port}/api/v1/posts
+```
+
 - to update , delete and get post by id {route:/api/v1/posts/:id}
 
 ## For Products

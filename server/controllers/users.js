@@ -1,4 +1,4 @@
-const { StatusCodes } = require("http-status-codes");
+const StatusCodes = require("http-status-codes");
 const { BadRequest, UnAuthorizedAccess } = require("../errors/index");
 const User = require("../models/user");
 
