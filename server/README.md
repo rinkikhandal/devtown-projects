@@ -12,27 +12,51 @@ npm install and npm start
 
 ## For User
 
-- to register user {route:/register}
+- to register user
 
-- to login and generate jwt token and place it in the headers of other routes ex:{authorization:token} {route:/login}
+```sh
+    http://localhost:{port}/register
+```
+
+- to login and generate jwt token and place it in the headers of other routes ex:{authorization:token}
+
+```sh
+    http://localhost:{port}/login
+```
 
 ## For Posts CRUD
 
-- to create and get all posts {route:/api/v1/posts}
+- to create and get all posts
 
 ```sh
-http://localhost:{port}/api/v1/posts
+    http://localhost:{port}/api/v1/posts
 ```
 
-- to update , delete and get post by id {route:/api/v1/posts/:id}
+- to update , delete and get post by id
+
+```sh
+    http://localhost:{port}/api/v1/posts/{id}
+```
 
 ## For Products
 
-- to get all products from db {route:/api/v1/products}
+- to get all products from db
 
-- to get and add the products in cart {route:api/v1/products/cart}
+```sh
+    http://localhost:{port}/api/v1/products
+```
 
-- to delete the cart products {route:/api/v1/products/cart/:id}
+- to get and add the products in cart
+
+```sh
+    http://localhost:{port}/api/v1/products/cart
+```
+
+- to delete the cart products
+
+```sh
+    http://localhost:{port}/api/v1/products/cart/{id}
+```
 
 ## Functionalities pending
 
