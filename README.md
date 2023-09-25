@@ -1,6 +1,6 @@
 # Todo App
 
-The DevTown Todo App is a full-stack web application built with React and a complete backend. This project offers a comprehensive solution for managing tasks and to-dos efficiently. Whether you're a developer looking for a reference project or a user in need of an intuitive task management tool, the DevTown Todo App has you covered.
+The __Todo App__ is a full-stack web application built with React and a complete backend. This project offers a comprehensive solution for managing tasks and to-dos efficiently. Whether you're a developer looking for a reference project or a user in need of an intuitive task management tool, the DevTown Todo App has you covered.
 
 ## Features
 __Task Creation__: Easily create and add tasks to your to-do list.<br/>
