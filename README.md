@@ -17,24 +17,24 @@ git clone -b todo-class-practice https://github.com/rinkikhandal/devtown-project
 ```
 Install the necessary dependencies for both the frontend and backend:
 
-bash
-Copy code
-cd frontend
+```sh
+cd app
 npm install
-bash
-Copy code
-cd backend
+```
+```sh
+cd server
 npm install
+```
+
 Start the development servers:
 
-bash
-Copy code
-cd frontend
+```sh
+cd app
 npm start
-bash
-Copy code
-cd backend
-npm start
+```
+```sh
+cd server
+npm s
 Open your web browser and access the application at http://localhost:3000.
 
 Sign up or log in to start managing your tasks effectively!
