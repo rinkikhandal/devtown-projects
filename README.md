@@ -34,14 +34,23 @@ npm start
 ```
 ```sh
 cd server
-npm s
-Open your web browser and access the application at http://localhost:3000.
+npm run dev
+```
+Open your web browser and access the application at http://localhost:3000 or the port number defined in scripts.<br/>
 
 Sign up or log in to start managing your tasks effectively!
 
-Usage
-Create new tasks and assign them to projects or categories.
-Edit task details such as descriptions, due dates, and priorities.
-Mark tasks as complete and archive them when you're finished.
-Collaborate with team members for efficient project management.
-Explore the user-friendly interface for a seamless experience.
+## Usage
+Create new tasks.<br/>
+Mark tasks as complete and archive them when you're finished.<br/>
+Collaborate with team members for efficient project management.<br/>
+Explore the user-friendly interface for a seamless experience.<br/>
+
+## Screen Shots
+#### Login Page
+![image](https://github.com/rinkikhandal/devtown-projects/assets/99892608/946df7f3-5426-4a05-b30f-202ac2596638)
+#### Main Page
+![image](https://github.com/rinkikhandal/devtown-projects/assets/99892608/73736b41-e7c5-42ff-bd09-1e3b841b005e)
+
+
+
